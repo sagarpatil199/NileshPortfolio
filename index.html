@@ -226,6 +226,85 @@ background: linear-gradient(180deg, #e5d6d6, #e82424);
     height: auto;
     opacity: 0.85;
 }
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    /* Page padding */
+    .container {
+        margin: 20px 12px;
+        padding: 30px 20px;
+        border-radius: 12px;
+    }
+
+    /* Header stack */
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+
+    header img {
+        width: 120px;
+        height: 140px;
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .tags {
+        text-align: center;
+    }
+
+    /* Grid becomes single column */
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    /* Disable sticky on mobile */
+    .stats {
+        position: relative;
+        top: auto;
+    }
+
+    .stat strong {
+        font-size: 1.5rem;
+    }
+
+    /* Section spacing */
+    section {
+        margin-bottom: 45px;
+    }
+
+    /* Publication table tweaks */
+    .pub-title {
+        font-size: 0.95rem;
+    }
+
+    .pub-authors {
+        font-size: 0.85rem;
+    }
+
+    .pub-journal {
+        font-size: 0.8rem;
+    }
+
+    /* Illustration spacing */
+    .side-illustration {
+        padding: 20px;
+    }
+
+    footer {
+        margin-top: 60px;
+        font-size: 0.85rem;
+    }
+}
 
     </style>
 </head>
@@ -472,3 +551,4 @@ background: linear-gradient(180deg, #e5d6d6, #e82424);
 
 </body>
 </html>
+
