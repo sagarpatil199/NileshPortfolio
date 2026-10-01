@@ -36,7 +36,12 @@
     DW=dv.clientWidth; DH=Math.max(48,Math.round(DW/cols*rows*.62)); dv.style.height=DH+'px';
     dv.width=DW*dpr; dv.height=DH*dpr; dctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  // Theme colours, read once and refreshed when the colour scheme changes
+  let C={};
+  function readColors(){
+    const cs=getComputedStyle(document.documentElement), v=n=>cs.getPropertyValue(n).trim();
+    C={ink:v('--ink'),muted:v('--muted'),line:v('--line'),a:v('--accent'),b:v('--accent-2'),card:v('--card')};
+  }
 
   function stateAt(t){
     let acc=0;
@@ -45,7 +50,6 @@
   }
 
   function draw(H,M,seg,alpha){
-    const C={ink:css('--ink'),muted:css('--muted'),line:css('--line'),a:css('--accent'),b:css('--accent-2')};
     const pl=40,pr=12,pt=12,pb=28, X=h=>pl+(h+1.15)/2.3*(W-pl-pr), Y=m=>pt+(1.15-m)/2.3*(HH-pt-pb);
     ctx.clearRect(0,0,W,HH);
     // grid
@@ -82,7 +86,7 @@
       const g=ctx.createRadialGradient(x,y,0,x,y,16);g.addColorStop(0,col);g.addColorStop(1,'transparent');
       ctx.globalAlpha=.35;ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,16,0,6.283);ctx.fill();
       ctx.globalAlpha=1;ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,4.5,0,6.283);ctx.fill();
-      ctx.strokeStyle=css('--card');ctx.lineWidth=1.5;ctx.stroke();
+      ctx.strokeStyle=C.card;ctx.lineWidth=1.5;ctx.stroke();
     }
     ctx.globalAlpha=1;
 
@@ -114,21 +118,49 @@
   function frame(ts){
     if(start===null){ start=ts; demag(); pts=[]; lastH=null; }
     const t=(ts-start)/1000;
-    if(t>TOTAL){ start=null; requestAnimationFrame(frame); return; }
+    if(t>TOTAL){ start=null; raf=requestAnimationFrame(frame); return; }
     const {H,seg}=stateAt(t);
     const M=applyH(H);
     if(seg) record(H,M,seg);
     const end=TOTAL-FADE, alpha=t>end?Math.max(0,1-(t-end)/FADE):1;
     draw(H,M,seg,alpha);
-    requestAnimationFrame(frame);
+    raf=requestAnimationFrame(frame);
   }
 
+  // Run only while the figure is on screen and the tab is visible;
+  // shift the start time on resume so the sweep continues where it left off.
+  let raf=0, pausedAt=null, onScreen=true;
+  function play(){
+    if(raf||reduce||document.hidden||!onScreen) return;
+    if(pausedAt!==null&&start!==null) start+=performance.now()-pausedAt;
+    pausedAt=null; raf=requestAnimationFrame(frame);
+  }
+  function pause(){
+    if(!raf) return;
+    cancelAnimationFrame(raf); raf=0; pausedAt=performance.now();
+  }
+  const drawStatic=()=>draw(1,applyH(1),null,1);
+
+  readColors();
   size();
-  window.addEventListener('resize',()=>{size();});
+  // Resize only when the width actually changes (mobile address-bar
+  // show/hide fires resize too), at most once per frame.
+  let rq=0;
+  window.addEventListener('resize',()=>{
+    if(rq) return;
+    rq=requestAnimationFrame(()=>{ rq=0; if(cv.clientWidth===W) return; size(); if(reduce) drawStatic(); });
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{ readColors(); if(reduce) drawStatic(); });
+
   if(reduce){
     demag(); let tt=0;
     while(tt<TOTAL-HOLD-FADE){ const s=stateAt(tt); const M=applyH(s.H); record(s.H,M,s.seg); tt+=.02; }
-    draw(1,applyH(1),null,1);
-    window.addEventListener('resize',()=>draw(1,applyH(1),null,1));
-  } else requestAnimationFrame(frame);
+    drawStatic();
+  } else {
+    document.addEventListener('visibilitychange',()=>document.hidden?pause():play());
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(([e])=>{ onScreen=e.isIntersecting; onScreen?play():pause(); }).observe(cv.closest('figure'));
+    }
+    play();
+  }
 })();

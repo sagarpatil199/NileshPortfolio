@@ -39,7 +39,7 @@ function render(){
     <li class="pub">
       <div class="yr">${p.y}</div>
       <div>
-        <p class="pt"><a href="${p.url}" target="_blank" rel="noopener">${esc(p.t)}</a></p>
+        <p class="pt"><a href="${p.url}" target="_blank" rel="noopener">${esc(p.t)}<span class="sr-only"> (opens in new tab)</span></a></p>
         <p class="au">${esc(p.a).replace(ME,'<strong>$1</strong>')}</p>
         <div class="jn">${esc(p.j)}</div>
         <div class="tags">
@@ -50,7 +50,7 @@ function render(){
       </div>
       <div class="side">
         ${p.c!=null?`<div class="cites"><b>${p.c}</b><span>citations</span></div>`:'<div></div>'}
-        <a class="doi" href="${p.url}" target="_blank" rel="noopener">${p.doi?'DOI ↗':'View ↗'}</a>
+        <a class="doi" href="${p.url}" target="_blank" rel="noopener">${p.doi?'DOI':'View'}<span aria-hidden="true"> ↗</span><span class="sr-only"> publisher page (opens in new tab)</span></a>
       </div>
     </li>`).join('') : '<li class="empty">No publications match that search.</li>';
 }

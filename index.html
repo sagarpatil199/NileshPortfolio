@@ -7,17 +7,19 @@
 <meta name="description" content="Dr. Nilesh Chougle — Research Scholar, Department of Physics, KLE Technological University, Hubli. Magneto-electrochemical energy storage, multiferroics, magnetocalorics and nanomaterials.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
   <div class="wrap">
     <a class="brand" href="#top">N. Chougle<span>.</span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-links" aria-label="Open menu">
-      <svg class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      <svg aria-hidden="true" focusable="false" class="bars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg aria-hidden="true" focusable="false" class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
     <div class="links" id="site-links">
       <a href="#about">About</a>
@@ -27,6 +29,8 @@
     </div>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <header class="hero" id="top">
   <div class="wrap hero-grid">
@@ -44,23 +48,24 @@
       <p class="lede">Investigating how <em>magnetic fields reshape electrochemical charge storage</em> — from multiferroic perovskites to doped ferrite nanostructures for next-generation supercapacitors.</p>
       <div class="cta">
         <a class="btn primary" href="#publications">View publications
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn" href="https://scholar.google.com/citations?user=LY0ouK8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"> (opens in new tab)</span></a>
         <a class="btn" href="mailto:nilesh.chougle@kletech.ac.in">Email</a>
       </div>
     </div>
 
-    <figure class="plot instrument" aria-label="Animated simulation of a magnetometer measuring an M–H hysteresis loop">
-      <div class="inst-head">
+    <figure class="plot instrument">
+      <figcaption class="sr-only">Simulated animation, not real measurement data: a vibrating-sample magnetometer sweep at 300 K tracing a magnetic hysteresis (M–H) loop, with arrows showing magnetic domains flipping as the applied field reverses.</figcaption>
+      <div class="inst-head" aria-hidden="true">
         <span class="live"><i></i>LIVE</span>
         <span>VSM sweep · 300 K</span>
         <span class="sim">simulated</span>
       </div>
-      <canvas id="mh"></canvas>
-      <div class="inst-label">Magnetic domains</div>
-      <canvas id="dom"></canvas>
-      <div class="readouts">
+      <canvas id="mh" aria-hidden="true"></canvas>
+      <div class="inst-label" aria-hidden="true">Magnetic domains</div>
+      <canvas id="dom" aria-hidden="true"></canvas>
+      <div class="readouts" aria-hidden="true">
         <div><small>Applied field H</small><b id="rH">+0.00</b><em>kOe</em></div>
         <div><small>Magnetisation M</small><b id="rM">0.00</b><em>emu/g</em></div>
         <div><small>Sweep</small><b id="rB">—</b><em id="rS">virgin</em></div>
@@ -80,7 +85,7 @@
   </div>
 </header>
 
-<main class="wrap">
+<div class="wrap">
 
   <section id="about">
     <div class="about">
@@ -111,19 +116,19 @@
     </div>
     <div class="themes">
       <article class="theme">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 11v2M7 10v4M11 10v4"/></svg></div>
+        <div class="ico"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 11v2M7 10v4M11 10v4"/></svg></div>
         <h3>Magneto-electrochemical energy storage</h3>
         <p>Probing how mT-scale magnetic fields alter specific capacitance, ion diffusion and charge-transfer kinetics in oxide supercapacitor electrodes.</p>
         <div class="chips"><span class="chip">Supercapacitors</span><span class="chip">LaFeO₃</span><span class="chip">α-Fe₂O₃</span><span class="chip">g-C₃N₄</span></div>
       </article>
       <article class="theme">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v8a6 6 0 0 0 12 0V3"/><path d="M6 3h4v8M14 3h4"/></svg></div>
+        <div class="ico"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v8a6 6 0 0 0 12 0V3"/><path d="M6 3h4v8M14 3h4"/></svg></div>
         <h3>Multiferroics &amp; magnetocalorics</h3>
         <p>Room-temperature magnetoelectric coupling, spin-glass behaviour, memory effects and magnetic entropy change in Pb-based perovskites and chalcogenide alloys.</p>
         <div class="chips"><span class="chip">Pb(Fe,W)O₃</span><span class="chip">MCE</span><span class="chip">Néel ordering</span></div>
       </article>
       <article class="theme">
-        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></svg></div>
+        <div class="ico"><svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></svg></div>
         <h3>Functional nanomaterials</h3>
         <p>Rare-earth orthoferrites and doped spinel ferrites — structure, cation distribution and magnetic/electrical response studied down to the Mössbauer level.</p>
         <div class="chips"><span class="chip">NdFeO₃</span><span class="chip">Co–Zn ferrites</span><span class="chip">Mössbauer</span></div>
@@ -156,7 +161,7 @@
           <div class="kpi"><b>344 K</b><span>T<sub>N</sub> antiferromagnetic</span></div>
           <div class="kpi"><b>3000</b><span>cycles tested</span></div>
         </div>
-        <a class="btn" href="https://doi.org/10.1016/j.est.2025.118145" target="_blank" rel="noopener">Read the paper →</a>
+        <a class="btn" href="https://doi.org/10.1016/j.est.2025.118145" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">→</span><span class="sr-only"> (opens in new tab)</span></a>
       </div>
     </div>
   </section>
@@ -169,18 +174,21 @@
         <p class="sub">Every title links to the publisher's version. Citation counts from Google Scholar where available.</p>
       </div>
     </div>
-    <div class="toolbar" role="toolbar" aria-label="Filter publications">
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filter publications">
       <button class="filter" data-f="all" aria-pressed="true">All</button>
       <button class="filter" data-f="first" aria-pressed="false">First author</button>
       <button class="filter" data-f="storage" aria-pressed="false">Energy storage</button>
       <button class="filter" data-f="magnetism" aria-pressed="false">Magnetism &amp; multiferroics</button>
       <button class="filter" data-f="nano" aria-pressed="false">Nanomaterials</button>
+      </div>
       <label class="search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Search title, material, journal…" aria-label="Search publications">
+        <span class="sr-only">Search publications</span>
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search title, material, journal…">
       </label>
     </div>
-    <div class="count" id="count"></div>
+    <div class="count" id="count" role="status" aria-live="polite"></div>
     <ol class="pubs" id="pubs"></ol>
   </section>
 
@@ -206,20 +214,24 @@
       <p class="sub">Interested in magnetic-field-assisted energy storage, multiferroic materials or joint characterisation work? Reach out.</p>
     </div>
     <div class="clist">
-      <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+      <div class="crow"><div class="ci"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
         <div><small>Email</small><a href="mailto:nilesh.chougle@kletech.ac.in">nilesh.chougle@kletech.ac.in</a></div></div>
-      <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div class="crow"><div class="ci"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
         <div><small>Address</small>Department of Physics, KLE Technological University, Hubli, India</div></div>
-      <div class="crow"><div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></div>
-        <div><small>Profiles</small><a href="https://scholar.google.com/citations?user=LY0ouK8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></div></div>
+      <div class="crow"><div class="ci"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 9l10 6 10-6-10-6z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></div>
+        <div><small>Profiles</small><a href="https://scholar.google.com/citations?user=LY0ouK8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar<span class="sr-only"> (opens in new tab)</span></a></div></div>
     </div>
   </section>
 
+</div>
+</main>
+
+<div class="wrap">
   <footer>
     <span>© 2026 Dr. Nilesh Chougle · Academic Research Portfolio</span>
     <span class="mono">Last updated Sept 2026</span>
   </footer>
-</main>
+</div>
 
 <script src="data/publications.js"></script>
 <script src="js/main.js"></script>
