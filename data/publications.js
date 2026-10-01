@@ -7,7 +7,11 @@
      first  true if first author
      cat    any of "storage", "magnetism", "nano" (drives the filters)
      kind   optional label, e.g. "Review" or "Conference"
-   Order does not matter: the page sorts by year, then citations. */
+   Order does not matter: the build sorts by year, then citations.
+
+   After editing, run:  node tools/build.js
+   That writes the list, the paper counts and the search-engine data into
+   index.html. (A GitHub check fails if this step is forgotten.) */
 const PUBLICATIONS = [
   {y:2026, t:"Exploring the potential charge storage mechanism in LaFeO₃ nano layers under magnetic field",
    a:"N. Chougala, A.S. Patil, S. Kulkarni, M.P. Sathisha, S. Matteppanavar",
